@@ -17,18 +17,18 @@ export class CustomerController {
     return this.customerService.findAll();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.customerService.findOne(+id);
+  @Get(':cpf')
+  findOne(@Param('cpf') cpf: string) {
+    return this.customerService.findOne(cpf);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateCustomerDto: UpdateCustomerDto) {
-    return this.customerService.update(+id, updateCustomerDto);
+  @Patch(':cpf')
+  update(@Param('cpf') cpf: string, @Body() updateCustomerDto: UpdateCustomerDto) {
+    return this.customerService.update(cpf, updateCustomerDto);
   }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.customerService.remove(+id);
+  @Delete(':cpf')
+  remove(@Param('cpf') cpf: string) {
+    return this.customerService.remove(cpf);
   }
 }

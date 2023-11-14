@@ -11,7 +11,7 @@ datasource db {
 }
 
 model Customer {
-  id       Int    @id @default(dbgenerated())
+  id       Int    @id @default(autoincrement())
   cpf      String @unique
   name     String
   age      Int
@@ -20,7 +20,7 @@ model Customer {
 }
 
 model Loan {
-  id   Int    @id @default(dbgenerated())
+  id   Int    @id @default(autoincrement())
   type String @unique
   rate Float
 }

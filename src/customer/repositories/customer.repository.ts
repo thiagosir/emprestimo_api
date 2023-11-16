@@ -15,6 +15,18 @@ export class CustomersRepository {
     })
   }
 
+  async createLoansCustomer(createCustomerDto: CreateCustomerDto): Promise<CustomerEntity> {
+    const { income, age, location, name } = createCustomerDto
+
+    if (income <= 3000) {
+        console.log("PERSONAL")
+    }
+
+    return this.prisma.customer.create({
+      data: createCustomerDto
+    })
+  }
+
   async findAll(): Promise<CustomerEntity[]> {
     return this.prisma.customer.findMany()
   }

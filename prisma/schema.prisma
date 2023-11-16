@@ -17,10 +17,17 @@ model Customer {
   age      Int
   income   Float
   location String
+  loans    Loan[]
+
+  @@map("customer")
 }
 
 model Loan {
-  id   Int    @id @default(autoincrement())
-  type String @unique
-  rate Float
+  id         Int       @id @default(autoincrement())
+  type       String    @unique
+  rate       Float
+  Customer   Customer? @relation(fields: [customerId], references: [id])
+  customerId Int?
+
+  @@map("loans")
 }

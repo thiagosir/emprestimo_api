@@ -1,19 +1,21 @@
 import { Injectable } from '@nestjs/common';
 import { CreateLoanDto } from './dto/create-loan.dto';
 import { UpdateLoanDto } from './dto/update-loan.dto';
+import { LoanRepository } from './repositories/loan.repository';
 
 @Injectable()
 export class LoansService {
+  constructor(private readonly repository: LoanRepository) { }
   create(createLoanDto: CreateLoanDto) {
-    return 'This action adds a new loan';
+    return this.repository.create(createLoanDto)
   }
 
   findAll() {
-    return `This action returns all loans`;
+    return this.repository.findAll()
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} loan`;
+    return this.repository.findOne(id)
   }
 
   update(id: number, updateLoanDto: UpdateLoanDto) {
